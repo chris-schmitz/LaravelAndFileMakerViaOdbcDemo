@@ -33,6 +33,14 @@ Accessing FileMaker via ODBC requires the use of the [FileMaker ODBC Driver](htt
 
 I created this project using a Windows Server 2012 R2 with PHP 5.5.11.
 
+## The PDO_ODBC driver
+
+[This was a major stumbling block for me](http://stackoverflow.com/questions/31813574/pdo-returning-error-could-not-find-driver-with-a-known-working-dsn). You have to make sure that the PDO_ODBC driver extension is enabled on your web server. On windows, the driver itself is included in the PHP source code, but it is not enabled. You'll need to add `extension=php_pdo_odbc.dll` to your `php.ini` file per [step 2 for windows users](http://php.net/manual/en/pdo.installation.php) on the PDO installation instructions. Once you've added the extension and restarted your web server, you should see the odbc driver show in the pdo section of your phpinfo page:
+
+![Extension added to php.ini](readmeImages/addedExtension.png)
+
+![Driver shows in phpinfo](readmeImages/driverShows.png)
+
 ### FileMaker Server
 
 This also requires FileMaker server installed with ODBC/JDBC access turned on. 
